@@ -21,7 +21,7 @@ def get_most_popular_articles():
 
 
 def get_info_from_logs():
-    """Return the 3 most popular articles from the 'news' database"""
+    """Return interesting info for one entry from the 'log' table"""
     db = psycopg2.connect(DBNAME)
     cur = db.cursor()
     cur.execute("select * from log")
