@@ -17,7 +17,7 @@ def get_most_popular_articles():
     cur.execute("select articles.title, count(log.path) as num \
         from articles left join log on log.path like \
         concat('%',articles.slug,'%') group by articles.title \
-        order by num desc;")
+        order by num desc limit 3;")
     list_articles = cur.fetchall()
     return list_articles
     db.close()
