@@ -62,7 +62,7 @@ if __name__ == '__main__':
     article_list = get_three_most_popular_articles()
     print("The three most popular articles of all time:")
     for article in article_list:
-        print("\t%s - %d views" % (article[0], article[1]))
+        print("\t\"%s\" - %d views" % (article[0], article[1]))
 
     authors_list = get_most_popular_authors()
     print("\nThe most popular authors of all time:")
