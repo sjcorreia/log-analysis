@@ -33,7 +33,8 @@ create view popular as
 	like concat('%',articles.slug,'%')
 	join authors on articles.author = authors.id
 	group by articles.title, articles.author, authors.name
-	order by num desc;```
+	order by num desc;
+```
 
 ## Running the code
 
