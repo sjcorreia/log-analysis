@@ -40,8 +40,8 @@ def query_database(sql_query):
     cur = db.cursor()
     cur.execute(sql_query)
     list_results = cur.fetchall()
-    return list_results
     db.close()
+    return list_results
 
 
 if __name__ == '__main__':
