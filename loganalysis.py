@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 #
+# Author: Steven Correia
+# github: sjcorreia
 # FSND Prj 3: Log analysis
 
 
@@ -46,4 +48,6 @@ if __name__ == '__main__':
         print("\t%s - %d views" % (article[0], article[1]))
 
     authors_list = get_most_popular_authors()
-    print(authors_list)
+    print("\nThe most popular authors of all time:")
+    for author in authors_list:
+        print("\t%s - %d views" % (author[0], author[1]))
