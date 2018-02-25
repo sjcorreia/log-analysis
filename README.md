@@ -62,7 +62,9 @@ https://stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percen
 
 https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points
 
-pep8 tool recommened to install and use pycodestyle tool.
+## Python Code Quality
+
+The source code was run through the command-line tool `pep8` to check that the code conforms to the [PEP8](https://www.python.org/dev/peps/pep-0008/) standards. The `pep8` tool recommened to install and use `pycodestyle` tool due to GitHub Issue #466. The source code was also checked using this tool, which did not report any errors.
 
 ## License
 
