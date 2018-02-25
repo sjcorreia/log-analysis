@@ -6,12 +6,12 @@ The Log Analysis project is part of the Udacity Full Stack Nanodegree program. T
 2. Who are the most popular article authors of all time?
 3. On which days did more than 1% of requests lead to errors?
 
-Throughout the course of this Nanodegree program, a [vagrant](https://www.vagrantup.com/) virtual machine is required on the host system. This virtual machine is a Linux based VM that provides a PostgreSQL database and support software needed to complete this project. The following [instructions](https://classroom.udacity.com/nanodegrees/nd004/parts/8d3e23e1-9ab6-47eb-b4f3-d5dc7ef27bf0/modules/bc51d967-cb21-46f4-90ea-caf73439dc59/lessons/5475ecd6-cfdb-4418-85a2-f2583074c08d/concepts/14c72fe3-e3fe-4959-9c4b-467cf5b7c3a0) will guide you through installing the vagrant VM on to your machine. 
+Throughout the course of this Nanodegree program, a [vagrant](https://www.vagrantup.com/) virtual machine is required on the host system. This virtual machine is a Linux based VM that provides a PostgreSQL database and support software needed to complete this project. Udacity provided us with a [Vagrantfile](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile) for configuration of the virtual machine. That Vagrantfile is inclueded in this repository.
 
-Once the vagrant VM is installed, the user will need to use the command `vagrant up` to start the VM.
+Once the vagrant VM is installed, the user will need to navigate to the directory containing the Vagrantfile and use the command `vagrant up` to start the VM.
 Then the user can log into the VM using the `vagrant ssh` command.
 
-Udacity provided the file `newsdata.sql` in a zipped format at the start of the project. 
+Udacity provided the file `newsdata.sql` in a zipped format at the start of the project. The file `newsdata.zip` can be found [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 This file will be copied to the `vagrant` directory.
 
 We need to change to the `vagrant` directory and run the command `psql -d news -f newsdata.sql` to load the data.
@@ -30,7 +30,7 @@ Once the user has connected to the VM and loaded the `newsdata` into a SQL datab
 create view popular as
 	select articles.title, articles.author, authors.name, count(log.path) as num
 	from articles left join log on log.path
-	like concat('%',articles.slug,'%')
+	like concat('%',articles.slug)
 	join authors on articles.author = authors.id
 	group by articles.title, articles.author, authors.name
 	order by num desc;
@@ -48,7 +48,7 @@ Executing the code is as simple as typing the command
 
 into the terminal.
 
-The output of this file can also bee seen in the text file `log_results.txt`.
+The output of this file can also be seen in the text file `log_results.txt`.
 
 ## Resources and References
 
