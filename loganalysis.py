@@ -68,3 +68,11 @@ if __name__ == '__main__':
     print("\nThe most popular authors of all time:")
     for author in authors_list:
         print("\t%s - %d views" % (author[0], author[1]))
+
+    errors_list = get_errors_each_date()
+    print("\nRequests led to errors greater than 1% on the following days:")
+    for error in errors_list:
+        percent_error = (error[2] / error[1]) * 100
+        if percent_error > 1:
+            print("\t%s - %.1f%% errors" % (error[0].strftime("%B %d, %Y"),
+                  percent_error))
