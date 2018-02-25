@@ -26,13 +26,14 @@ The view `popular` was created and used in the `loganalysis.py` file to help ans
 
 Once the user has connected to the VM and loaded the `newsdata` into a SQL database, she/he will need to connect to the database using the command `psql -d news` and run the following command:
 
-`create view popular as
+```sql
+create view popular as
 	select articles.title, articles.author, authors.name, count(log.path) as num
 	from articles left join log on log.path
 	like concat('%',articles.slug,'%')
 	join authors on articles.author = authors.id
 	group by articles.title, articles.author, authors.name
-	order by num desc;`
+	order by num desc;```
 
 ## Running the code
 
