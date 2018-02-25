@@ -14,6 +14,13 @@ SQL_THREE_POPULAR_ARTICLES = "select title, num from popular limit 3;"
 SQL_POPULAR_AUTHORS = "select name, sum(num) from popular group by name \
     order by sum desc;"
 
+SQL_ERRORS_EACH_DAY = "select date(log.time), count(log.status) as total, \
+    err_result.errors from \
+    log join (select date(time), count(status) as errors from log \
+    where status not like '%OK%' group by date(time)) as err_result \
+    on date(log.time) = date(err_result.date) \
+    group by date(log.time), err_result.errors;"
+
 db = psycopg2.connect(DBNAME)
 
 
@@ -30,7 +37,7 @@ def get_three_most_popular_articles():
 
 
 def get_most_popular_authors():
-    """Return interesting info for one entry from the 'log' table
+    """Return the most popular authors from the 'news' database
     This function uses the view 'popular', please see the README file
     for instructions on creating this view in the 'news database'."""
     db = psycopg2.connect(DBNAME)
@@ -38,6 +45,16 @@ def get_most_popular_authors():
     cur.execute(SQL_POPULAR_AUTHORS)
     list_authors = cur.fetchall()
     return list_authors
+    db.close()
+
+
+def get_errors_each_date():
+    """Return the total queries, errors for each date in the 'log' table."""
+    db = psycopg2.connect(DBNAME)
+    cur = db.cursor()
+    cur.execute(SQL_ERRORS_EACH_DAY)
+    list_dates_errors = cur.fetchall()
+    return list_dates_errors
     db.close()
 
 
