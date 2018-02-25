@@ -48,6 +48,8 @@ Executing the code is as simple as typing the command
 
 into the terminal.
 
+The output of this file can also bee seen in the text file `log_results.txt`.
+
 ## Resources and References
 
 The following links were helpful in creating the SQL queries and properly outputting the information using Python.
