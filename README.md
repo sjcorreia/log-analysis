@@ -38,6 +38,18 @@ create view popular as
 
 ## Running the code
 
+The user will need to download and install [Python](https://www.python.org/downloads/), if it is not already installed.
+
+This project was implemented usign Python 3 and I recommend using Python 3 for all future projects.
+
+Executing the code is as simple as typing the command
+
+	python3 loganalysis.py
+
+into the terminal.
+
+## Resources and References
+
 https://stackoverflow.com/questions/8974328/mysql-multiple-joins-in-one-query
 
 https://stackoverflow.com/questions/1386166/how-to-use-a-like-with-a-join-in-sql
