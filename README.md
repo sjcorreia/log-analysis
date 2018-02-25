@@ -52,7 +52,7 @@ into the terminal.
 
 The following links were helpful in creating the SQL queries and properly outputting the information using Python.
 
-* [SQl Multiple Joins](https://stackoverflow.com/questions/8974328/mysql-multiple-joins-in-one-query) question on Stack Overflow.
+* [SQL Multiple Joins](https://stackoverflow.com/questions/8974328/mysql-multiple-joins-in-one-query) question on Stack Overflow.
 * Using [`LIKE` in a join](https://stackoverflow.com/questions/1386166/how-to-use-a-like-with-a-join-in-sql) question on Stack Overflow.
 * The PostgreSQL [date function](https://www.postgresql.org/docs/9.0/static/functions-datetime.html).
 * Formatting for the [datetime](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) object in Python.
