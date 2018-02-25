@@ -50,17 +50,14 @@ into the terminal.
 
 ## Resources and References
 
-https://stackoverflow.com/questions/8974328/mysql-multiple-joins-in-one-query
+The following links were helpful in creating the SQL queries and properly outputting the information using Python.
 
-https://stackoverflow.com/questions/1386166/how-to-use-a-like-with-a-join-in-sql
-
-postgreSQL date function https://www.postgresql.org/docs/9.0/static/functions-datetime.html
-
-https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior
-
-https://stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings
-
-https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points
+* [SQl Multiple Joins](https://stackoverflow.com/questions/8974328/mysql-multiple-joins-in-one-query) question on Stack Overflow.
+* Using [`LIKE` in a join](https://stackoverflow.com/questions/1386166/how-to-use-a-like-with-a-join-in-sql) question on Stack Overflow.
+* The PostgreSQL [date function](https://www.postgresql.org/docs/9.0/static/functions-datetime.html).
+* Formatting for the [datetime](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) object in Python.
+* Properly displaying the [% symbol](https://stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings) in a Python string, from Stack Overflow.
+* Limiting the number of digits after the decimal point in a Python [float](https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points), from Stack Overflow.
 
 ## Python Code Quality
 
