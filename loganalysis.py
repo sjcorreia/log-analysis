@@ -9,8 +9,12 @@ import psycopg2
 
 DBNAME = "dbname=news"
 
+# The following query uses the view 'popular' in the 'news' database.
+# Please refer to the README.md for instructions on creating this view.
 SQL_THREE_POPULAR_ARTICLES = "select title, num from popular limit 3;"
 
+# The following query uses the view 'popular' in the 'news' database.
+# Please refer to the README.md for instructions on creating this view.
 SQL_POPULAR_AUTHORS = "select name, sum(num) from popular group by name \
     order by sum desc;"
 
@@ -24,52 +28,34 @@ SQL_ERRORS_EACH_DAY = "select date(log.time), count(log.status) as total, \
 db = psycopg2.connect(DBNAME)
 
 
-def get_three_most_popular_articles():
-    """Return the 3 most popular articles from the 'news' database
-    This function uses the view 'popular', please see the README file
-    for instructions on creating this view in the 'news database'."""
+def query_database(sql_query):
+    """Return the resulting table for input sql query.
+    Args:
+        sql_query (str): A correct SQL query.
+
+    Returns:
+        list: A list with the results of the SQL query.
+    """
     db = psycopg2.connect(DBNAME)
     cur = db.cursor()
-    cur.execute(SQL_THREE_POPULAR_ARTICLES)
-    list_articles = cur.fetchall()
-    return list_articles
-    db.close()
-
-
-def get_most_popular_authors():
-    """Return the most popular authors from the 'news' database
-    This function uses the view 'popular', please see the README file
-    for instructions on creating this view in the 'news database'."""
-    db = psycopg2.connect(DBNAME)
-    cur = db.cursor()
-    cur.execute(SQL_POPULAR_AUTHORS)
-    list_authors = cur.fetchall()
-    return list_authors
-    db.close()
-
-
-def get_errors_each_date():
-    """Return the total queries, errors for each date in the 'log' table."""
-    db = psycopg2.connect(DBNAME)
-    cur = db.cursor()
-    cur.execute(SQL_ERRORS_EACH_DAY)
-    list_dates_errors = cur.fetchall()
-    return list_dates_errors
+    cur.execute(sql_query)
+    list_results = cur.fetchall()
+    return list_results
     db.close()
 
 
 if __name__ == '__main__':
-    article_list = get_three_most_popular_articles()
+    article_list = query_database(SQL_THREE_POPULAR_ARTICLES)
     print("The three most popular articles of all time:")
     for article in article_list:
         print("\t\"%s\" - %d views" % (article[0], article[1]))
 
-    authors_list = get_most_popular_authors()
+    authors_list = query_database(SQL_POPULAR_AUTHORS)
     print("\nThe most popular authors of all time:")
     for author in authors_list:
         print("\t%s - %d views" % (author[0], author[1]))
 
-    errors_list = get_errors_each_date()
+    errors_list = query_database(SQL_ERRORS_EACH_DAY)
     print("\nRequests led to errors greater than 1% on the following days:")
     for error in errors_list:
         percent_error = (error[2] / error[1]) * 100
