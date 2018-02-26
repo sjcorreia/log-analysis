@@ -6,13 +6,13 @@ The Log Analysis project is part of the Udacity Full Stack Nanodegree program. T
 2. Who are the most popular article authors of all time?
 3. On which days did more than 1% of requests lead to errors?
 
-Throughout the course of this Nanodegree program, a [vagrant](https://www.vagrantup.com/) virtual machine is required on the host system. This virtual machine is a Linux based VM that provides a PostgreSQL database and support software needed to complete this project. Udacity provided us with a [Vagrantfile](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile) for configuration of the virtual machine. That Vagrantfile is inclueded in this repository.
+Throughout the course of this Nanodegree program, a [vagrant](https://www.vagrantup.com/) virtual machine configuration is required on the host system. This virtual machine is a Linux based VM that provides a PostgreSQL database and support software needed to complete this project. The VM can be downloaded and installed from the [Virtual Box](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) website. Udacity provided us with a [Vagrantfile](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile) for configuration of the virtual machine. That Vagrantfile is inclueded in this repository.
 
-Once the vagrant VM is installed, the user will need to navigate to the directory containing the Vagrantfile and use the command `vagrant up` to start the VM.
+Once the vagrant VM is installed, the user will need to navigate to the directory containing the Vagrantfile and use the command `vagrant up` to cause Vagrant to download and install the Linux virtual machine.
 Then the user can log into the VM using the `vagrant ssh` command.
 
 Udacity provided the file `newsdata.sql` in a zipped format at the start of the project. The file `newsdata.zip` can be found [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
-This file will be copied to the `vagrant` directory.
+This file will be copied to the `vagrant` directory. Files that are in the directory `/vagrant` on the virtual machine are shared with the `vagrant` folder on the host computer.
 
 We need to change to the `vagrant` directory and run the command `psql -d news -f newsdata.sql` to load the data.
 
