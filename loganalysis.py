@@ -18,12 +18,15 @@ SQL_THREE_POPULAR_ARTICLES = "select title, num from popular limit 3;"
 SQL_POPULAR_AUTHORS = "select name, sum(num) from popular group by name \
     order by sum desc;"
 
-SQL_ERRORS_EACH_DAY = "select date(log.time), count(log.status) as total, \
+SQL_ERRORS_EACH_DAY = "select date, per_err from \
+    (select date, ((cast(errors as float)/total) * 100) as per_err from \
+    (select date(log.time), count(log.status) as total, \
     err_result.errors from \
     log join (select date(time), count(status) as errors from log \
     where status not like '%OK%' group by date(time)) as err_result \
     on date(log.time) = date(err_result.date) \
-    group by date(log.time), err_result.errors;"
+    group by date(log.time), err_result.errors) as error_table) as final \
+    where per_err > 1;"
 
 db = psycopg2.connect(DBNAME)
 
@@ -58,7 +61,5 @@ if __name__ == '__main__':
     errors_list = query_database(SQL_ERRORS_EACH_DAY)
     print("\nRequests led to errors greater than 1% on the following days:")
     for error in errors_list:
-        percent_error = (error[2] / error[1]) * 100
-        if percent_error > 1:
-            print("\t%s - %.1f%% errors" % (error[0].strftime("%B %d, %Y"),
-                  percent_error))
+        print('\t{0:%B %d, %Y} - {1:.1f}% errors'
+              .format(error[0], error[1]))
